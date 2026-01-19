@@ -1,0 +1,53 @@
+/* Background styling to match the starry night theme */
+.bg {
+    background:url('https://images.pexels.com/photos/1585323/pexels-photo-1585323.jpeg');
+    background-size: cover;
+    background-attachment: scroll; 
+    padding: 20px 0;
+}
+
+
+.first {
+    background-color: orange;
+    border: 2px solid red;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    
+    
+}
+
+.first p {
+    color:aliceblue;
+}
+
+.second {
+    background-color: yellow;
+    border: 2px dotted red;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+   
+    
+}
+.second p{
+    color: red;
+}
+
+.third {
+    background-color: rgba(255, 255, 0, 0.6);
+    border-bottom: 10px solid white;
+    border-right: 10px solid white;
+    border-radius: 50px 0px 50px 0px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    
+   
+    
+}
+
+.third p{
+    color: blue;
+}

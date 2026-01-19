@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.border{
+    width: 600px;
+    height: 600px;
+    margin: 40px;
+}
+.row{
+    width: 600px;
+    height: 75px;
+    border: 2px solid black;
+}
+.black{
+    width: 75px;
+    height: 75px;
+    background-color: black;
+    color: white;
+    font-size: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.white{
+    width: 75px;
+    height: 75px;
+    background-color: white;
+    color: black;
+    font-size: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.black, .white{
+    float: left;
+}
