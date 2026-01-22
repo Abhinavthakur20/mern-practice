@@ -5,7 +5,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* HERO CONTAINER */
+
 .container{
     height: 100vh;
     width: 100%;
@@ -16,7 +16,7 @@
     flex-direction: column;
 }
 
-/* NAVBAR */
+
 .navbar{
     width: 100%;
     height: 70px;
@@ -52,7 +52,7 @@
     color: white;
 }
 
-/* HERO SECTION */
+
 .outer{
     flex: 1;
     display: flex;
@@ -91,7 +91,7 @@
     background-color: rgb(35, 35, 180);
 }
 
-/* DESTINATION SECTION */
+
 .destination{
     width: 100%;
     padding: 60px 0;
@@ -100,12 +100,12 @@
 }
 
 .destination h5{
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 500;
     margin-bottom: 30px;
 }
 
-/* CARDS */
+
 .cards{
     display: flex;
     justify-content: center;
@@ -145,18 +145,166 @@
     margin-top: 5px;
 }
 
-/* ABOUT SECTION */
+
 .about{
-    height: 400px;
+    height: 600px;
     width: 100%;
-    background-color: #27253d;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    
+}
+.about .texts{
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+
 }
 
 .about .texts p{
-    color: white;
-    font-size: 40px;
+    color: black;
+    font-size: 35px;
     font-weight: 500;
+    
+    
+}
+.about .boxImage{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    
+    
+}
+.about .boxImage .div1{
+    width: 650px;
+    height: 400px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    
+    
+    
+}
+.about .boxImage .div2{
+    width: 650px;
+    height: 400px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+      
+}
+
+.package{
+    height: 380px;
+    width: 100%;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.package .travelText{
+    padding: 35px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.package .travelText p{
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.package .priceCard{
+    display: flex;
+    gap: 20px;
+
+}
+.package .priceCard .pcard1{
+    height: 170px;
+    width: 450px;
+    background-color: white;
+    gap: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    
+}
+.package .priceCard .pcard1:hover{
+    border: 1px solid blue;
+}
+.package .priceCard .pcard1 .content{
+    padding: 30px;
+}
+
+.testimonial{
+    width: 100%;
+    height: 350px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.testimonial .say{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    text-align: center;
+    padding: 30px;
+    justify-content: center;
+}
+.testimonial .say p{
+    font-size: 35px;
+}
+.testimonial .testcard{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.testimonial .testcard .first{
+    width: 450px;
+    height: 130px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+     box-shadow: 10px 8px 25px rgba(128, 128, 128, 0.11)
+
+}
+.testimonial .testcard .first:hover{
+    border: 1px solid blue;
+}
+.testimonial .testcard .first .inner{
+    padding: 20px;
+}
+
+.bottom{
+    height: 80px;
+    width: 100%;
+    background-color: #212529;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.bottom p{
+    font-size: 19px;
 }
