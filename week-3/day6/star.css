@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-sizing: border-box;
+    margin: 30px;
+    background-color: grey;
+    position: relative;
+
+}
+
+.div1 {
+    width: 2px;
+    height: 350px;
+    background-color: red;
+    position: relative;
+    transform: translateX(331px) translateY(128px) rotate(22deg);
+
+}
+
+.div2 {
+    width: 2px;
+    height: 350px;
+    background-color: red;
+    transform: translateX(454px) translateY(129px) rotate(160deg);
+
+}
+
+.div3 {
+    width: 2px;
+    height: 350px;
+    background-color: red;
+    transform: translateX(360px) translateY(205px) rotate(120deg);
+}
+
+.div4 {
+    width: 2px;
+    height: 350px;
+    background-color: red;
+    transform: translateX(384px) translateY(118px) rotate(90deg);
+}
+
+.div5 {
+    width: 2px;
+    height: 350px;
+    background-color: red;
+    transform: translateX(408px) translateY(205px) rotate(60deg);
+}
+
+.ani {
+    width: 20px;
+    height: 20px;
+    background-color: palegreen;
+    position: absolute;
+    animation: myAnimation 10s linear infinite;
+}
+
+@keyframes myAnimation {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        background-color: pink;
+    }
+
+    20% {
+        transform: translate(-15px, 340px);
+        background-color: brown;
+    }
+
+    
+    40% {
+        transform: translate(205px, 80px) rotate(190deg);
+        background-color: rgb(50, 165, 42);
+    }
+
+    60% {
+        transform: translate(-120px, 200px)rotate(190deg);
+        background-color: blue;
+    }
+    80%{
+        transform: translate(220px, 240px);
+        background-color: blueviolet;
+
+    }
+
+
+
+}
