@@ -41,21 +41,25 @@
 
 .div1{
     right: 80px;
-    bottom: -40px;
+    bottom: -30px;
     animation: div1Move 12s linear infinite;
+        z-index: 3;
+
 
 }
 
 .div2{
     left: 280px;
-    bottom: 0px;
+    bottom: -30px;
     animation: div2Move 8s linear infinite;
+    z-index: 1;
 }
 
 .div3{
     right: 480px;
     bottom: 60px;
     animation: div3Move 8s linear infinite;
+    z-index: 1;
     
 }
 
