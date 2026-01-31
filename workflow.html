@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BagPacker - System Workflow Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-section {
+            background: #fff5f7;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #f5576c;
+        }
+        
+        .info-section h2 {
+            color: #f5576c;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-section ul {
+            margin-left: 25px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .info-section li {
+            margin-bottom: 8px;
+        }
+        
+        .diagram-wrapper {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .mermaid {
+            text-align: center;
+        }
+        
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .workflow-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .workflow-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .workflow-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .workflow-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .icon {
+            font-size: 1.8rem;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 BagPacker - Complete System Workflow</h1>
+            <p>End-to-End User Journeys & Process Flows</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-section">
+                <h2>🎯 Workflow Overview</h2>
+                <ul>
+                    <li><strong>Traveler Journey:</strong> Registration → Companion Matching OR Browse Trips → Booking → Payment → Trip Experience → Review</li>
+                    <li><strong>Organizer Journey:</strong> Registration → Verification → Trip Creation → Booking Management → Analytics Dashboard</li>
+                    <li><strong>Admin Journey:</strong> Organizer Verification → User ID Verification → Platform Monitoring → Trust Score Calculation</li>
+                    <li><strong>Real-time Features:</strong> Socket.io powers live chat, seat updates, and instant notifications</li>
+                    <li><strong>Payment Integration:</strong> Multi-gateway support with webhook-based confirmation and automated refunds</li>
+                </ul>
+            </div>
+            
+            <div class="diagram-wrapper">
+                <div class="mermaid">
+graph TB
+    Start([User Visits BagPacker Platform])
+    Start --> Choice{User Type?}
+    
+    %% TRAVELER WORKFLOW
+    Choice -->|Solo Traveler| Register1[Register/Login as Traveler]
+    Register1 --> Verify1[Email & Phone Verification]
+    Verify1 --> Upload1[Upload Government ID]
+    Upload1 --> Profile1[Complete Profile Setup]
+    Profile1 --> TravelerDash[Traveler Dashboard]
+    
+    TravelerDash --> TravelerChoice{What to do?}
+    
+    %% FIND COMPANION PATH
+    TravelerChoice -->|Find Travel Companion| PostTrip[Create Trip Post]
+    PostTrip --> EnterDetails[Enter Source, Destination, Date]
+    EnterDetails --> VehicleCheck{Have Vehicle?}
+    VehicleCheck -->|Yes| VehicleDetails[Enter Vehicle Type & Seats]
+    VehicleCheck -->|No| SearchCompanion[Search for Companions]
+    VehicleDetails --> SearchCompanion
+    SearchCompanion --> MatchAlgo[AI Matching Algorithm]
+    MatchAlgo --> MatchResults[View Matched Users]
+    MatchResults --> SendRequest[Send Connection Request]
+    SendRequest --> WaitResponse{Request Accepted?}
+    WaitResponse -->|Yes| ChatRoom1[Open Chat Room]
+    WaitResponse -->|No| SearchCompanion
+    ChatRoom1 --> PlanTogether[Plan Trip Details]
+    PlanTogether --> ExpenseCalc[Auto Calculate Expense Split]
+    ExpenseCalc --> ConfirmPlan[Confirm Travel Plan]
+    
+    %% BOOK ORGANIZED TRIP PATH
+    TravelerChoice -->|Book Organized Trip| BrowseTrips[Browse Available Trips]
+    BrowseTrips --> FilterTrips[Filter by Date, Location, Type]
+    FilterTrips --> ViewTrip[View Trip Details]
+    ViewTrip --> CheckItinerary[Check Day-wise Itinerary]
+    CheckItinerary --> CheckReviews[Read Organizer Reviews]
+    CheckReviews --> SelectPickup[Select Pickup Point]
+    SelectPickup --> EnterSeats[Enter Number of Seats]
+    EnterSeats --> ViewPrice[View Total Price]
+    ViewPrice --> BookingConfirm{Confirm Booking?}
+    BookingConfirm -->|Yes| Payment[Proceed to Payment]
+    BookingConfirm -->|No| BrowseTrips
+    Payment --> PaymentGateway{Select Payment Method}
+    PaymentGateway -->|Razorpay| RazorpayPay[Pay via Razorpay]
+    PaymentGateway -->|Stripe| StripePay[Pay via Stripe]
+    PaymentGateway -->|PayPal| PayPalPay[Pay via PayPal]
+    RazorpayPay --> PaymentProcess[Process Payment]
+    StripePay --> PaymentProcess
+    PayPalPay --> PaymentProcess
+    PaymentProcess --> PaymentStatus{Payment Success?}
+    PaymentStatus -->|Yes| BookingSuccess[Booking Confirmed]
+    PaymentStatus -->|No| PaymentFailed[Payment Failed]
+    PaymentFailed --> RetryPayment{Retry?}
+    RetryPayment -->|Yes| Payment
+    RetryPayment -->|No| BookingCancelled[Booking Cancelled]
+    BookingSuccess --> SeatAlloc[Allocate Seats]
+    SeatAlloc --> UpdateInventory[Update Seat Inventory Real-time]
+    UpdateInventory --> EmailConfirm[Send Confirmation Email]
+    EmailConfirm --> ChatRoom2[Join Trip Chat Room]
+    ChatRoom2 --> TripTracking[Track Trip Status]
+    TripTracking --> TripComplete{Trip Completed?}
+    TripComplete -->|Yes| WriteReview[Write Review & Rating]
+    WriteReview --> TrustUpdate1[Update Trust Score]
+    
+    %% ORGANIZER WORKFLOW
+    Choice -->|Travel Agency/Organizer| Register2[Register as Organizer]
+    Register2 --> Verify2[Email & Phone Verification]
+    Verify2 --> BusinessDetails[Enter Business Details]
+    BusinessDetails --> UploadLicense[Upload Business License & GST]
+    UploadLicense --> BankDetails[Add Bank Account Details]
+    BankDetails --> AdminReview1[Admin Reviews Application]
+    AdminReview1 --> ApprovalStatus{Approved?}
+    ApprovalStatus -->|No| RejectionNotice[Receive Rejection Notice]
+    RejectionNotice --> ReApply{Re-apply?}
+    ReApply -->|Yes| BusinessDetails
+    ReApply -->|No| EndReject([Registration Rejected])
+    ApprovalStatus -->|Yes| OrganizerDash[Organizer Dashboard]
+    
+    OrganizerDash --> OrgChoice{What to do?}
+    
+    %% CREATE TRIP PATH
+    OrgChoice -->|Create New Trip| TripForm[Fill Trip Creation Form]
+    TripForm --> TripBasics[Enter Title, Description, Type]
+    TripBasics --> TripRoute[Set Source & Destination]
+    TripRoute --> TripDates[Select Start & End Dates]
+    TripDates --> TripPrice[Set Price per Person]
+    TripPrice --> TripSeats[Set Total Seats]
+    TripSeats --> AddItinerary[Create Day-wise Itinerary]
+    AddItinerary --> ItineraryLoop{Add More Days?}
+    ItineraryLoop -->|Yes| DayDetails[Enter Day Activities]
+    DayDetails --> AddItinerary
+    ItineraryLoop -->|No| AddPickup[Add Pickup Points]
+    AddPickup --> PickupDetails[Enter Location, Time, Sequence]
+    PickupDetails --> PickupLoop{Add More Pickups?}
+    PickupLoop -->|Yes| AddPickup
+    PickupLoop -->|No| Inclusions[Add Inclusions & Exclusions]
+    Inclusions --> PreviewTrip[Preview Trip Listing]
+    PreviewTrip --> PublishTrip[Publish Trip]
+    PublishTrip --> TripLive[Trip Goes Live on Platform]
+    
+    %% MANAGE BOOKINGS PATH
+    OrgChoice -->|Manage Bookings| ViewBookings[View All Bookings]
+    ViewBookings --> BookingDetails[See Booking Details]
+    BookingDetails --> PassengerList[View Passenger List]
+    PassengerList --> SeatMap[View Seat Allocation Map]
+    SeatMap --> RealtimeUpdate[Real-time Seat Updates via Socket.io]
+    RealtimeUpdate --> BookingActions{Action Required?}
+    BookingActions -->|Confirm| ConfirmBooking[Confirm Booking]
+    BookingActions -->|Cancel| CancelBooking[Cancel & Refund]
+    BookingActions -->|Modify| ModifyBooking[Modify Details]
+    ConfirmBooking --> NotifyTraveler[Send Notification to Traveler]
+    
+    %% VIEW ANALYTICS PATH
+    OrgChoice -->|View Analytics| Dashboard[Analytics Dashboard]
+    Dashboard --> RevenueChart[View Revenue Statistics]
+    RevenueChart --> BookingTrends[Booking Trends Analysis]
+    BookingTrends --> PopularRoutes[Popular Routes Report]
+    PopularRoutes --> ReviewMetrics[Review & Rating Metrics]
+    ReviewMetrics --> TrustUpdate2[Monitor Trust Score]
+    
+    %% ADMIN WORKFLOW
+    Choice -->|Admin/Moderator| AdminLogin[Admin Login]
+    AdminLogin --> AdminDash[Admin Dashboard]
+    AdminDash --> AdminChoice{Admin Task?}
+    
+    %% VERIFY ORGANIZERS
+    AdminChoice -->|Verify Organizers| PendingOrg[View Pending Applications]
+    PendingOrg --> ReviewDocs[Review Business Documents]
+    ReviewDocs --> VerifyGST[Verify GST & License]
+    VerifyGST --> BackgroundCheck[Conduct Background Check]
+    BackgroundCheck --> Decision{Approve?}
+    Decision -->|Yes| ApproveOrg[Approve Organizer]
+    Decision -->|No| RejectOrg[Reject with Reason]
+    ApproveOrg --> SendApproval[Send Approval Email]
+    RejectOrg --> SendRejection[Send Rejection Email]
+    
+    %% VERIFY USERS
+    AdminChoice -->|Verify Users| PendingUsers[View Pending ID Verifications]
+    PendingUsers --> CheckID[Verify Government ID]
+    CheckID --> IDDecision{ID Valid?}
+    IDDecision -->|Yes| ApproveID[Approve Verification]
+    IDDecision -->|No| RejectID[Reject Verification]
+    ApproveID --> VerifyBadge[Add Verified Badge]
+    
+    %% MONITOR PLATFORM
+    AdminChoice -->|Monitor Platform| ViewReports[View Reports & Complaints]
+    ViewReports --> ReviewFlags[Review Flagged Content]
+    ReviewFlags --> InvestigateFraud[Investigate Fraud Reports]
+    InvestigateFraud --> ActionNeeded{Action Required?}
+    ActionNeeded -->|Suspend| SuspendAccount[Suspend User/Organizer]
+    ActionNeeded -->|Ban| BanAccount[Ban Permanently]
+    ActionNeeded -->|Warning| SendWarning[Send Warning]
+    ActionNeeded -->|Dismiss| DismissReport[Dismiss Report]
+    
+    %% MANAGE TRUST SCORES
+    AdminChoice -->|Calculate Trust Scores| RunAlgorithm[Run Trust Score Algorithm]
+    RunAlgorithm --> CollectMetrics[Collect User Metrics]
+    CollectMetrics --> CalcComponents[Calculate: Reviews + Completion + Response + Verification]
+    CalcComponents --> UpdateScores[Update All Trust Scores]
+    UpdateScores --> PublishScores[Publish Updated Scores]
+    
+    %% REAL-TIME FEATURES
+    TripLive -.->|Socket.io| RealtimeUpdate
+    ChatRoom1 -.->|Socket.io| RealtimeChat[Real-time Chat Updates]
+    ChatRoom2 -.->|Socket.io| RealtimeChat
+    UpdateInventory -.->|Socket.io| RealtimeSeat[Real-time Seat Status]
+    
+    %% PAYMENT WEBHOOKS
+    PaymentProcess -.->|Webhook| PaymentWebhook[Payment Gateway Webhook]
+    PaymentWebhook -.->|Update Status| BookingSuccess
+    
+    %% NOTIFICATIONS
+    SendApproval -.->|Email/SMS| NotificationService[Notification Service]
+    EmailConfirm -.->|Email/SMS| NotificationService
+    NotifyTraveler -.->|Email/SMS| NotificationService
+    
+    %% STYLING
+    classDef travelerClass fill:#e1f5ff,stroke:#0077be,stroke-width:2px
+    classDef organizerClass fill:#fff4e1,stroke:#ff9800,stroke-width:2px
+    classDef adminClass fill:#ffe1e1,stroke:#d32f2f,stroke-width:2px
+    classDef paymentClass fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    classDef realtimeClass fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    
+    class Register1,Verify1,Upload1,Profile1,TravelerDash,PostTrip,BrowseTrips,WriteReview travelerClass
+    class Register2,OrganizerDash,TripForm,PublishTrip,ViewBookings,Dashboard organizerClass
+    class AdminLogin,AdminDash,PendingOrg,ReviewDocs,ApproveOrg adminClass
+    class Payment,PaymentGateway,RazorpayPay,StripePay,PayPalPay,PaymentProcess paymentClass
+    class RealtimeUpdate,RealtimeChat,RealtimeSeat,PaymentWebhook realtimeClass
+                </div>
+            </div>
+            
+            <div class="workflow-grid">
+                <div class="workflow-card">
+                    <h3><span class="icon">🧳</span> Traveler Path</h3>
+                    <p>Solo travelers can either find companions for cost-sharing or book organized trips. The system automates expense splitting and provides real-time chat for coordination.</p>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3><span class="icon">🏢</span> Organizer Path</h3>
+                    <p>Travel agencies move from WhatsApp to a professional platform with trip management, real-time booking updates, and analytics dashboards.</p>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3><span class="icon">🛡️</span> Admin Path</h3>
+                    <p>Administrators verify organizers, monitor platform integrity, calculate trust scores, and handle fraud reports to maintain ecosystem quality.</p>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3><span class="icon">💳</span> Payment Flow</h3>
+                    <p>Multi-gateway integration (Razorpay, Stripe, PayPal) with webhook-based confirmation ensures secure transactions and automated seat allocation.</p>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3><span class="icon">⚡</span> Real-time Features</h3>
+                    <p>Socket.io enables instant chat messages, live seat availability updates, and real-time notifications across all user types.</p>
+                </div>
+                
+                <div class="workflow-card">
+                    <h3><span class="icon">🎯</span> Matching Algorithm</h3>
+                    <p>AI-powered companion matching considers route, date, preferences, and trust scores to connect compatible travelers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>BagPacker Project | Six Month Industrial Training CSD 481 | Guru Nanak Dev University</p>
+            <p>Submitted by: Abhinav Thakur (17032249064) | Internship at: O7 Services</p>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

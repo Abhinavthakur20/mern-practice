@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BagPacker - Entity Relationship Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .diagram-wrapper {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .mermaid {
+            text-align: center;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .legend-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .legend-item h3 {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .legend-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎒 BagPacker - Entity Relationship Diagram</h1>
+            <p>Complete Database Schema for Travel-Tech Ecosystem</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-section">
+                <h2>📊 Database Overview</h2>
+                <p>This Entity-Relationship Diagram represents the complete database architecture for the BagPacker platform, built using MongoDB's document-oriented structure. The schema supports three primary user roles: Travelers, Organizers, and Administrators.</p>
+                <p><strong>Key Features:</strong> Real-time seat inventory management, automated expense splitting, companion matching algorithm, integrated payment tracking, verified review system, and comprehensive trust score calculation.</p>
+            </div>
+            
+            <div class="diagram-wrapper">
+                <div class="mermaid">
+erDiagram
+    USER ||--o{ TRIP_POST : creates
+    USER ||--o{ BOOKING : makes
+    USER ||--o{ REVIEW : writes
+    USER ||--o{ CHAT_MESSAGE : sends
+    USER ||--o{ EXPENSE_SHARE : participates
+    USER ||--o{ COMPANION_MATCH : requests
+    
+    ORGANIZER ||--o{ TRIP : organizes
+    ORGANIZER ||--o{ ITINERARY : manages
+    ORGANIZER }o--|| USER : "is-a"
+    
+    TRIP ||--o{ BOOKING : "has"
+    TRIP ||--o{ ITINERARY : contains
+    TRIP ||--o{ PICKUP_POINT : includes
+    TRIP ||--o{ REVIEW : receives
+    TRIP ||--o{ SEAT_INVENTORY : manages
+    
+    TRIP_POST ||--o{ COMPANION_MATCH : generates
+    TRIP_POST ||--o{ EXPENSE_SHARE : initiates
+    
+    BOOKING ||--|| PAYMENT : requires
+    BOOKING ||--o{ SEAT_ALLOCATION : allocates
+    
+    CHAT_MESSAGE }o--|| CHAT_ROOM : belongs_to
+    CHAT_ROOM ||--o{ USER : includes
+    
+    ADMIN ||--o{ VERIFICATION : performs
+    ADMIN ||--o{ TRUST_SCORE : calculates
+    
+    USER {
+        string user_id PK
+        string name
+        string email UK
+        string phone UK
+        string password_hash
+        string profile_picture
+        date date_of_birth
+        string gender
+        string government_id
+        boolean is_verified
+        float trust_score
+        datetime created_at
+        datetime updated_at
+        string account_type "traveler/organizer/both"
+    }
+    
+    ORGANIZER {
+        string organizer_id PK
+        string user_id FK
+        string business_name
+        string business_license
+        string business_address
+        string gst_number
+        boolean is_approved
+        float average_rating
+        int total_trips_organized
+        datetime approved_at
+        string bank_account_details
+    }
+    
+    TRIP {
+        string trip_id PK
+        string organizer_id FK
+        string trip_title
+        text trip_description
+        string source_city
+        string destination_city
+        date start_date
+        date end_date
+        int duration_days
+        decimal price_per_person
+        int total_seats
+        int available_seats
+        string trip_type "group/private/adventure/leisure"
+        string difficulty_level
+        text inclusions
+        text exclusions
+        string trip_status "upcoming/ongoing/completed/cancelled"
+        datetime created_at
+        datetime updated_at
+    }
+    
+    TRIP_POST {
+        string post_id PK
+        string user_id FK
+        string source_city
+        string destination_city
+        date travel_date
+        string travel_mode "car/bike/bus/train"
+        boolean has_vehicle
+        string vehicle_type
+        int available_seats
+        decimal estimated_cost
+        string post_status "active/matched/expired/cancelled"
+        text preferences
+        datetime created_at
+        datetime expires_at
+    }
+    
+    ITINERARY {
+        string itinerary_id PK
+        string trip_id FK
+        int day_number
+        string location
+        text activities
+        string accommodation
+        string meals_included
+        time start_time
+        time end_time
+    }
+    
+    PICKUP_POINT {
+        string pickup_id PK
+        string trip_id FK
+        string location_name
+        string address
+        decimal latitude
+        decimal longitude
+        time pickup_time
+        int sequence_order
+    }
+    
+    BOOKING {
+        string booking_id PK
+        string trip_id FK
+        string user_id FK
+        int number_of_seats
+        decimal total_amount
+        decimal discount_applied
+        decimal final_amount
+        string booking_status "pending/confirmed/cancelled/completed"
+        datetime booking_date
+        datetime cancelled_at
+        string cancellation_reason
+        string pickup_point_id FK
+    }
+    
+    PAYMENT {
+        string payment_id PK
+        string booking_id FK
+        decimal amount
+        string payment_method "razorpay/stripe/paypal"
+        string transaction_id
+        string payment_status "pending/completed/failed/refunded"
+        datetime payment_date
+        string gateway_response
+    }
+    
+    SEAT_INVENTORY {
+        string inventory_id PK
+        string trip_id FK
+        date date
+        int total_seats
+        int booked_seats
+        int available_seats
+        datetime last_updated
+    }
+    
+    SEAT_ALLOCATION {
+        string allocation_id PK
+        string booking_id FK
+        string seat_number
+        string passenger_name
+        int passenger_age
+        string passenger_gender
+    }
+    
+    COMPANION_MATCH {
+        string match_id PK
+        string post_id FK
+        string requester_id FK
+        string matched_user_id FK
+        string match_status "pending/accepted/rejected"
+        datetime matched_at
+        datetime responded_at
+    }
+    
+    EXPENSE_SHARE {
+        string expense_id PK
+        string post_id FK
+        string vehicle_owner_id FK
+        decimal total_distance_km
+        decimal fuel_cost_per_km
+        decimal toll_charges
+        decimal total_expense
+        int number_of_participants
+        decimal cost_per_person
+        string calculation_status "calculated/distributed/settled"
+        datetime created_at
+    }
+    
+    CHAT_ROOM {
+        string room_id PK
+        string room_type "trip/companion/support"
+        string reference_id "trip_id or post_id"
+        datetime created_at
+        datetime last_message_at
+    }
+    
+    CHAT_MESSAGE {
+        string message_id PK
+        string room_id FK
+        string sender_id FK
+        text message_content
+        string message_type "text/image/location/file"
+        boolean is_read
+        datetime sent_at
+    }
+    
+    REVIEW {
+        string review_id PK
+        string trip_id FK
+        string organizer_id FK
+        string reviewer_id FK
+        int rating "1-5"
+        text review_text
+        boolean is_verified_traveler
+        datetime created_at
+        text organizer_response
+        datetime response_at
+    }
+    
+    VERIFICATION {
+        string verification_id PK
+        string user_id FK
+        string verification_type "email/phone/government_id/organizer_license"
+        string document_path
+        string verification_status "pending/approved/rejected"
+        string verified_by FK
+        datetime submitted_at
+        datetime verified_at
+        string rejection_reason
+    }
+    
+    TRUST_SCORE {
+        string score_id PK
+        string user_id FK
+        float base_score
+        float review_score
+        float completion_rate
+        float response_rate
+        float verification_bonus
+        float final_trust_score
+        datetime calculated_at
+    }
+    
+    ADMIN {
+        string admin_id PK
+        string name
+        string email UK
+        string password_hash
+        string role "super_admin/moderator/support"
+        datetime created_at
+    }
+                </div>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <h3>🔑 Primary Entities</h3>
+                    <p>USER, ORGANIZER, TRIP, TRIP_POST - Core entities representing the main actors and objects in the system.</p>
+                </div>
+                <div class="legend-item">
+                    <h3>💳 Transaction Entities</h3>
+                    <p>BOOKING, PAYMENT, SEAT_ALLOCATION - Handle the complete booking and payment lifecycle with real-time updates.</p>
+                </div>
+                <div class="legend-item">
+                    <h3>🤝 Social Entities</h3>
+                    <p>COMPANION_MATCH, CHAT_ROOM, CHAT_MESSAGE - Enable peer-to-peer connections and real-time communication.</p>
+                </div>
+                <div class="legend-item">
+                    <h3>💰 Financial Entities</h3>
+                    <p>EXPENSE_SHARE - Automates cost splitting for companions sharing rides, calculating fair distribution of fuel and tolls.</p>
+                </div>
+                <div class="legend-item">
+                    <h3>⭐ Trust Entities</h3>
+                    <p>REVIEW, TRUST_SCORE, VERIFICATION - Build platform credibility through verified reviews and calculated trust metrics.</p>
+                </div>
+                <div class="legend-item">
+                    <h3>📍 Location Entities</h3>
+                    <p>PICKUP_POINT, ITINERARY - Manage detailed trip logistics with GPS coordinates and day-wise schedules.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>BagPacker Project | Six Month Industrial Training CSD 481 | Guru Nanak Dev University</p>
+            <p>Submitted by: Abhinav Thakur (17032249064) | Internship at: O7 Services</p>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            er: {
+                layoutDirection: 'TB',
+                fontSize: 12,
+                useMaxWidth: true
+            }
+        });
+    </script>
+</body>
+</html>
