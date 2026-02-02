@@ -1,0 +1,5 @@
+total 6 div
+sm-12
+md-4
+lg-6
+xl-in one line
