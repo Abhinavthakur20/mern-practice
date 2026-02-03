@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baikal Foundation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Georgia", serif;
+        color: #2c3e50;
+      }
+
+      /* Navigation */
+      .navbar {
+        background-color: #1a3a52;
+        padding: 16px 32px;
+      }
+
+      .navbar-brand {
+        color: white !important;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .navbar-brand small {
+        display: block;
+        font-size: 10px;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+        font-size: 16px;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background-color: #f8f9fa;
+        padding: 48px 16px;
+        text-align: center;
+      }
+
+      .hero-section h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        color: #2c3e50;
+      }
+
+      .hero-section p {
+        font-size: 16px;
+        color: #6c757d;
+        max-width: 700px;
+        margin: 0 auto 16px;
+      }
+
+      .hero-section .contact-link {
+        color: #3fc1c9;
+        text-decoration: none;
+        font-style: italic;
+      }
+
+      .hero-section .contact-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Cards Section */
+      .cards-section {
+        padding: 32px 26px;
+      }
+
+      .info-card {
+        border: none;
+        overflow: hidden;
+        height: 100%;
+      }
+
+      .info-card img {
+        width: 100%;
+        height: 350px;
+      }
+
+      .info-card .card-body {
+        padding: 16px;
+        text-align: center;
+      }
+
+      .info-card h3 {
+        color: #3fc1c9;
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      .info-card p {
+        color: #6c757d;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .info-card .learn-more {
+        color: #3fc1c9;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a3a52;
+        padding: 32px;
+        text-align: center;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .social-icons a {
+        width: 45px;
+        height: 45px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a3a52;
+        text-decoration: none;
+      }
+
+      /* Mobile Menu Toggle */
+      .navbar-toggler {
+        border-color: white;
+      }
+
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 24px;
+        }
+
+        .hero-section h1 {
+          font-size: 24px;
+        }
+
+        .info-card h3 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          Baikal
+          <small>FOUNDATION</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Homes
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                About
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                News
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Components
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Docs
+              </a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-primary">Purchase</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>A Bootstrap 5 website template for entrepreneurial community.</h1>
+      <p>
+        Some of the coolest websites on earth are empowered by ThemeWagon. To
+        continue the ambience, Baikal aims to help the rapidly growing
+        entrepreneurial community to go online. It's loaded with many elements &
+        features. See what you can do with it.
+      </p>
+      <p>
+        <em
+          >For any questions please contact
+          <a href="mailto:info@yourdomain.com" class="contact-link"
+            >info@yourdomain.com</a
+          ></em
+        >
+      </p>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+      <div class="container">
+        <div class="row justify-content-lg-center">
+          <!-- About Card -->
+          <div class="col-lg-5 mb-3">
+            <div class="info-card">
+              <img
+                src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d"
+                alt="Coastal Bridge"
+              />
+              <div class="card-body">
+                <h3>ABOUT</h3>
+                <p>
+                  Find out about our organization, mission, our methods, and the
+                  results of our decades of advocacy.
+                </p>
+                <a href="#" class="learn-more">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Card -->
+          <div class="col-lg-5 mb-3">
+            <div class="info-card">
+              <img
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop"
+                alt="Forest Path"
+              />
+              <div class="card-body">
+                <h3>PORTFOLIO</h3>
+                <p>
+                  Discover our curated portfolio of successful projects,
+                  showcasing years of expertise and collaboration.
+                </p>
+                <a href="#" class="learn-more">See Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
