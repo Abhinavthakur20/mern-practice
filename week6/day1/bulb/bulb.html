@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button style="border-radius: 30px; padding: 8px 30px;background-color: grey;color: white;" onclick="off()">OFF</button>
+    <img id="img1" src="one.png" alt="" width="300px" />
+    <button style="border-radius: 30px; padding: 8px 30px;background-color: rgba(255, 255, 0, 0.575);color: Black;" onclick="on()">ON</button>
+
+
+    <script>
+      function off() {
+        document.getElementById("img1").src=("one.png");
+        console.log("bulb off");
+      }
+
+      function on() {
+        console.log("bulb on");
+        document.getElementById("img1").src=("two.png");
+      }
+    </script>
+  </body>
+</html>

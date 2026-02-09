@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .outline {
+        width: 80%;
+        height: 600px;
+        border: 5px solid black;
+        margin-top: 30px;
+      }
+      .one {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        padding: 20px;
+      }
+      .four {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        padding: 20px;
+        gap: 10px;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="outline">
+        <div class="one">
+          <img id="mainImg" src="images/one.jpg" width="250px" height="150px" alt="" />
+        </div>
+
+        <div class="four">
+          <img
+            onmouseover="changeFirst()"
+            onmouseout="resetFirst()"
+            id="first"
+            src="images/two.jpg"
+            width="250px"
+            height="150px"
+            alt=""
+          />
+          <img
+            onmouseover="changeSecond()"
+            onmouseout="resetSecond()"
+            id="second"
+            src="images/three.jpg"
+            width="250px"
+            height="150px"
+            alt=""
+          />
+          <img
+            onmouseover="changeThird()"
+            onmouseout="resetThird()"
+            id="third"
+            src="images/four.jpg"
+            width="250px"
+            height="150px"
+            alt=""
+          />
+          <img
+            onmouseover="changeFourth()"
+            onmouseout="resetFourth()"
+            id="fourth"
+            src="images/five.jpg"
+            width="250px"
+            height="150px"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //   one
+
+      function changeFirst() {
+        document.getElementById("mainImg").src = "images/two.jpg";
+        document.getElementById("first").src = "images/one.jpg";
+      }
+
+      function resetFirst() {
+        document.getElementById("mainImg").src = "images/one.jpg";
+        document.getElementById("first").src = "images/two.jpg";
+      }
+
+      //   two
+
+      function changeSecond() {
+        document.getElementById("mainImg").src = "images/three.jpg";
+        document.getElementById("second").src = "images/one.jpg";
+      }
+
+      function resetSecond() {
+        document.getElementById("mainImg").src = "images/one.jpg";
+        document.getElementById("second").src = "images/three.jpg";
+      }
+
+      //   three
+
+      function changeThird() {
+        document.getElementById("mainImg").src = "images/four.jpg";
+        document.getElementById("third").src = "images/one.jpg";
+      }
+
+      function resetThird() {
+        document.getElementById("mainImg").src = "images/one.jpg";
+        document.getElementById("third").src = "images/four.jpg";
+      }
+
+      //   four
+
+      function changeFourth() {
+        document.getElementById("mainImg").src = "images/five.jpg";
+        document.getElementById("fourth").src = "images/one.jpg";
+      }
+
+      function resetFourth() {
+        document.getElementById("mainImg").src = "images/one.jpg";
+        document.getElementById("fourth").src = "images/five.jpg";
+      }
+    </script>
+  </body>
+</html>
