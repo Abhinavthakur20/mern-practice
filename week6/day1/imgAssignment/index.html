@@ -30,6 +30,9 @@
         gap: 10px;
         margin-top: 100px;
       }
+      .same{
+        border: 3px solid rgb(207, 213, 81);
+      }
     </style>
   </head>
   <body>
@@ -44,6 +47,7 @@
             onmouseover="changeFirst()"
             onmouseout="resetFirst()"
             id="first"
+            class="same"
             src="images/two.jpg"
             width="250px"
             height="150px"
@@ -53,6 +57,7 @@
             onmouseover="changeSecond()"
             onmouseout="resetSecond()"
             id="second"
+            class="same"
             src="images/three.jpg"
             width="250px"
             height="150px"
@@ -62,6 +67,7 @@
             onmouseover="changeThird()"
             onmouseout="resetThird()"
             id="third"
+            class="same"
             src="images/four.jpg"
             width="250px"
             height="150px"
@@ -71,6 +77,7 @@
             onmouseover="changeFourth()"
             onmouseout="resetFourth()"
             id="fourth"
+            class="same"
             src="images/five.jpg"
             width="250px"
             height="150px"
@@ -80,54 +87,8 @@
       </div>
     </div>
 
-    <script>
-      //   one
-
-      function changeFirst() {
-        document.getElementById("mainImg").src = "images/two.jpg";
-        document.getElementById("first").src = "images/one.jpg";
-      }
-
-      function resetFirst() {
-        document.getElementById("mainImg").src = "images/one.jpg";
-        document.getElementById("first").src = "images/two.jpg";
-      }
-
-      //   two
-
-      function changeSecond() {
-        document.getElementById("mainImg").src = "images/three.jpg";
-        document.getElementById("second").src = "images/one.jpg";
-      }
-
-      function resetSecond() {
-        document.getElementById("mainImg").src = "images/one.jpg";
-        document.getElementById("second").src = "images/three.jpg";
-      }
-
-      //   three
-
-      function changeThird() {
-        document.getElementById("mainImg").src = "images/four.jpg";
-        document.getElementById("third").src = "images/one.jpg";
-      }
-
-      function resetThird() {
-        document.getElementById("mainImg").src = "images/one.jpg";
-        document.getElementById("third").src = "images/four.jpg";
-      }
-
-      //   four
-
-      function changeFourth() {
-        document.getElementById("mainImg").src = "images/five.jpg";
-        document.getElementById("fourth").src = "images/one.jpg";
-      }
-
-      function resetFourth() {
-        document.getElementById("mainImg").src = "images/one.jpg";
-        document.getElementById("fourth").src = "images/five.jpg";
-      }
+    <script src="index.js">
+     
     </script>
   </body>
 </html>

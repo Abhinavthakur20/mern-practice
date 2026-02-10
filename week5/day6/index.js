@@ -32,5 +32,5 @@ checkPositiveNegative(0);
 checkOddEven(7);
 checkOddEven(10);
 
-checkStringNumber('Hello');
+checkStringNumber("abc");
 checkStringNumber(123);
