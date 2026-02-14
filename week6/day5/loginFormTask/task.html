@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form Task</title>
+</head>
+<body>
+  <h1>Login Form</h1>
+
+  <form id="loginForm" onsubmit="handleSubmit(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+    <br /><br />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+    <br /><br />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <br /><br />
+
+    <button  type="submit">Submit</button>
+  </form>
+
+  <script>
+    function handleSubmit(e) {
+        e.preventDefault()
+    
+
+      const nameValue = document.getElementById("name").value;
+      const emailValue = document.getElementById("email").value;
+      const passwordValue = document.getElementById("password").value;
+
+      console.log("Name:", nameValue);
+      console.log("Email:", emailValue);
+      console.log("Password:", passwordValue);
+
+      sessionStorage.setItem("email", emailValue);
+      sessionStorage.setItem("password", passwordValue);
+      sessionStorage.setItem("name", nameValue);
+
+      const savedName = sessionStorage.getItem("name");
+      const savedEmail = sessionStorage.getItem("email");
+      const savedPassword = sessionStorage.getItem("password");
+
+      console.log("Saved Name:", savedName);
+      console.log("Saved Email:", savedEmail);
+      console.log("Saved Password:", savedPassword);
+    }
+  </script>
+</body>
+</html>
