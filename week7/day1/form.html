@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Register Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      }
+
+      .box {
+        max-width: 540px;
+      }
+    </style>
+  </head>
+  <body class="d-flex align-items-center justify-content-center p-3">
+    <div class="card shadow box w-100">
+      <div class="card-body p-4 p-md-5">
+        <h1 class="h3 mb-3 text-center">Register User</h1>
+        <p class="text-muted text-center mb-4">Create your account</p>
+
+        <form id="form1" class="row g-3 needs-validation" novalidate>
+          <div class="col-12">
+            <label for="name" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder=""
+              minlength="3"
+              required
+            />
+            <div class="invalid-feedback">
+              Please enter at least 3 characters for name.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="mail" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="mail"
+              name="mail"
+              placeholder=""
+              pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+              required
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              placeholder="10-digit number"
+              pattern="^[0-9]{10}$"
+              required
+            />
+            <div class="invalid-feedback">
+              Phone number must be exactly 10 digits.
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label for="user" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="user"
+              name="user"
+              placeholder="username"
+              minlength="4"
+              required
+            />
+            <div class="invalid-feedback">
+              Username must be at least 4 characters.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="pass" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="pass"
+              name="pass"
+              placeholder="Enter a strong password"
+              minlength="8"
+              required
+            />
+            <div class="invalid-feedback">
+              Password must be at least 8 characters long.
+            </div>
+          </div>
+
+          <div class="col-12 d-grid mt-2">
+            <button class="btn btn-primary" type="submit">Register</button>
+          </div>
+        </form>
+
+        <div class="mt-4 border-top pt-3">
+          <h2 class="h5">Entered User Info</h2>
+          <p id="p1" class="mb-1">Name: -</p>
+          <p id="p2" class="mb-1">Email: -</p>
+          <p id="p3" class="mb-1">Phone: -</p>
+          <p id="p4" class="mb-1">Username: -</p>
+          <p id="p5" class="mb-0">Password: -</p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const form = document.getElementById("form1");
+      const nameInput = document.getElementById("name");
+      const mailInput = document.getElementById("mail");
+      const phoneInput = document.getElementById("phone");
+      const userInput = document.getElementById("user");
+      const passInput = document.getElementById("pass");
+      const p1 = document.getElementById("p1");
+      const p2 = document.getElementById("p2");
+      const p3 = document.getElementById("p3");
+      const p4 = document.getElementById("p4");
+      const p5 = document.getElementById("p5");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
+          p1.textContent = "Name: " + nameInput.value;
+          p2.textContent = "Email: " + mailInput.value;
+          p3.textContent = "Phone: " + phoneInput.value;
+          p4.textContent = "Username: " + userInput.value;
+          p5.textContent = "Password: " + passInput.value;
+        }
+
+        form.classList.add("was-validated");
+      });
+    </script>
+  </body>
+</html>
