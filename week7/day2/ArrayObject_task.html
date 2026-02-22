@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+// 🟦 ARRAY TASKS
+// Given Array
+    let courses = ["JS", "HTML", "CSS", "React"];
+
+    // Q1. Add "Node" at the end
+
+    courses.push("Node")
+    console.log(courses)
+    // ['JS', 'HTML', 'CSS', 'React', 'Node']
+
+    // Q2. Remove first element
+
+    
+    courses.shift()
+    // ['HTML', 'CSS', 'React', 'Node']
+    console.log(courses);
+
+    // Q3. Get only "HTML" and "CSS" (no change in original)
+
+    courses.splice(0,2)
+    // ['React', 'Node']
+    console.log(courses);
+
+
+    // Q4. Replace "CSS" with "Tailwind"
+
+    courses.splice(1, 1, "Tailwind");
+    // ['React', 'Tailwind']
+    console.log(courses);
+
+   
+    // Q5. Check if "React" exists
+
+    let exists = courses.includes("React")
+    // true
+    console.log(exists)
+
+
+
+
+    // 🟩 OBJECT TASKS
+    // Given Object
+
+
+    let user = { name: "John", age: 22, city: "Delhi" };
+
+    // Q1. Access age
+    console.log(user.age);
+    // 22
+
+
+    // Q2. Update city to "Mumbai"
+    user.city="Mumbai"
+    console.log(user.city);
+    // Mumbai
+
+
+    // Q3. Add email key
+    user.email = "abc@gmail.com"
+    console.log(user);
+    // {name: 'John', age: 22, city: 'Mumbai', email: 'abc@gmail.com'}
+
+
+    // Q4. Delete age
+    delete user.age;
+    console.log(user);
+    // {name: 'John', city: 'Mumbai', email: 'abc@gmail.com'}
+
+
+    // Q5. Get all keys
+    let keys = Object.keys(user)
+    console.log(keys);
+    // ['name', 'city', 'email']
+    
+    
+
+
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+
+
+    
+
+
+
+      
+    </script>
+  </body>
+</html>
